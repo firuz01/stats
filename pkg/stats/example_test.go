@@ -1,7 +1,7 @@
 package stats
 
 import (
-	"github.com/firuz01/bank/pkg/types"
+	"github.com/firuz01/bank/v2/pkg/types"
 	"fmt"
 	
 )
@@ -12,15 +12,21 @@ func ExampleAvg()  {
 			ID: 1,
 			Amount: 60,
 			Category: "shop",
+			Status: "FAIL",
 		},{
 			ID: 2,
 			Amount: 80,
 			Category: "shop",
-
+			Status: "OK",
+		},{
+			ID: 3,
+			Amount: 70,
+			Category: "shop",
+			Status: "OK",
 		},
 	}
 	fmt.Println(Avg(payments))
-	// Output: 70
+	// Output: 50
 }
 func ExampleTotalInCategory()  {
 	payments := []types.Payment{
@@ -28,31 +34,36 @@ func ExampleTotalInCategory()  {
 			ID:       1,
 			Amount:   10_000_00,
 			Category: "auto",
+			Status: "FAIL",
 		},
 		{
 			ID:       2,
 			Amount:   20_000_00,
 			Category: "auto",
+			Status: "OK",
 		},
 		{
 			ID:       3,
 			Amount:   30_000_00,
 			Category: "auto",
+			Status: "INPROGRESS",
 		},
 		{
 			ID:       3,
 			Amount:   50_000_00,
 			Category: "shop",
+			Status: "FAIL",
 		},
 		{
 			ID:       3,
 			Amount:   10_000_00,
 			Category: "shop",
+			Status: "OK",
 		},
 	}
 
 	inCategory := types.Category("auto")
 	totalInCategory := TotalInCategory(payments, inCategory)
 fmt.Println(totalInCategory)
-// Output: 6000000
+// Output: 5000000
 }
