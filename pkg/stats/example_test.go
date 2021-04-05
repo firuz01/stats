@@ -15,18 +15,28 @@ func ExampleAvg()  {
 			Status: "FAIL",
 		},{
 			ID: 2,
-			Amount: 80,
+			Amount: 60,
+			Category: "shop",
+			Status: "INPROGRESS",
+		},{
+			ID: 3,
+			Amount: 60,
+			Category: "shop",
+			Status: "FAIL",
+		},{
+			ID: 3,
+			Amount: 60,
 			Category: "shop",
 			Status: "OK",
 		},{
 			ID: 3,
-			Amount: 70,
+			Amount: 60,
 			Category: "shop",
 			Status: "OK",
 		},
 	}
 	fmt.Println(Avg(payments))
-	// Output: 50
+	// Output: 60
 }
 func ExampleTotalInCategory()  {
 	payments := []types.Payment{

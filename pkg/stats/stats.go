@@ -7,14 +7,14 @@ import (
 )
 
 func Avg(payments []types.Payment) types.Money {
-	numPayments := types.Money(len(payments))
+	numPayments := types.Money(0)
 	sumPayments := types.Money(0)
 	for _, payment := range payments {
-		if payment.Status == types.StatusFail {
-			continue
+		if payment.Status == types.StatusFail {	
+			continue	
 		} 
-		moneyAmount := payment.Amount
-		sumPayments += moneyAmount
+		sumPayments += payment.Amount
+		numPayments ++
 	}
 	return sumPayments/numPayments
 }
