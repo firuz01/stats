@@ -1,4 +1,4 @@
-module github.com/firuz01/stats
+module github.com/firuz01/stats/v2
 
 go 1.16
 
