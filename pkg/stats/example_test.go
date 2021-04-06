@@ -1,9 +1,8 @@
 package stats
 
-import (
-	"github.com/firuz01/bank/v2/pkg/types"
+import ( 
 	"fmt"
-	
+	"github.com/firuz01/bank/v2/pkg/types"
 )
 
 func ExampleAvg()  {
