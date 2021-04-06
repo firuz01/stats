@@ -57,3 +57,61 @@ func TestCategoriesAvg_FoundMoreResult(t *testing.T) {
 		t.Errorf("invalid result, expected: %v, actual: %v", expected, result)
 	}
 }
+
+func TestPeriodsDynamic_empty(t *testing.T) {
+	first := map [types.Category] types.Money {}
+	second := map [types.Category] types.Money {}
+	expected := map [types.Category] types.Money {}
+	result := PeriodsDynamic(first, second)
+
+	if !reflect.DeepEqual(expected, result) {
+		t.Errorf("invalid result, expected: %v, actual: %v", expected, result)
+	}
+}
+
+func TestPeriodsDynamic_firstempty(t *testing.T) {
+	first := map [types.Category] types.Money {}
+	second := map [types.Category] types.Money {
+		"auto": 1000,
+	}
+	expected := map [types.Category] types.Money {
+		"auto": 1000,
+	}
+	result := PeriodsDynamic(first, second)
+
+	if !reflect.DeepEqual(expected, result) {
+		t.Errorf("invalid result, expected: %v, actual: %v", expected, result)
+	}
+}
+
+func TestPeriodsDynamic_secondempty(t *testing.T) {
+	first := map [types.Category] types.Money {
+		"auto": 1000,
+	}
+	second := map [types.Category] types.Money {}
+	expected := map [types.Category] types.Money {
+		"auto": -1000,
+	}
+	result := PeriodsDynamic(first, second)
+
+	if !reflect.DeepEqual(expected, result) {
+		t.Errorf("invalid result, expected: %v, actual: %v", expected, result)
+	}
+}
+
+func TestPeriodsDynamic_full(t *testing.T) {
+	first := map [types.Category] types.Money {
+		"pharm": 1000,
+	}
+	second := map [types.Category] types.Money {
+		"pharm": 2000,
+	}
+	expected := map [types.Category] types.Money {
+		"pharm": 1000,
+	}
+	result := PeriodsDynamic(first, second)
+
+	if !reflect.DeepEqual(expected, result) {
+		t.Errorf("invalid result, expected: %v, actual: %v", expected, result)
+	}
+}
